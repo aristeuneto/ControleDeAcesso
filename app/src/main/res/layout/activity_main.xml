@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:text="Sitema de Controle de Acesso"
+        android:text="Sistema de Controle de Acesso"
         android:textSize="30sp" />
 
     <Space

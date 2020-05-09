@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.controledeacesso.R;
@@ -25,6 +27,8 @@ public class ActivityCadastrar extends AppCompatActivity {
     private EditText edtMorador;
     private Button btnSalvar;
     private ModelAcesso modelAcesso;
+    private Spinner spMorador;
+    private ArrayAdapter arrayAdapterMorador;
 
 
     @Override
@@ -36,8 +40,12 @@ public class ActivityCadastrar extends AppCompatActivity {
         edtCpf = findViewById(R.id.edtIdCpf);
         edtOrigem = findViewById(R.id.edtIdOrigem);
         edtDestino = findViewById(R.id.edtIdDestino);
-        edtMorador = findViewById(R.id.edtIdMoradorSimNao);
+   //     edtMorador = findViewById(R.id.edtIdMoradorSimNao);
         btnSalvar = findViewById(R.id.btnSalvar);
+        spMorador = findViewById(R.id.spMorador);
+
+        arrayAdapterMorador = ArrayAdapter.createFromResource(ActivityCadastrar.this,R.array.arrayMorador,R.layout.support_simple_spinner_dropdown_item);
+        spMorador.setAdapter(arrayAdapterMorador);
 
         this.clickNoBotaoSalvarLinester();
 
@@ -114,8 +122,10 @@ public class ActivityCadastrar extends AppCompatActivity {
             return null;
         }
 
-        if (edtMorador.getText().toString().isEmpty() == false) {
-            modelAcesso.setMoradorSimNao(edtMorador.getText().toString());
+      //  edtMorador.getText().toString().isEmpty() == false
+        if (spMorador.getSelectedItem() != null) {
+            modelAcesso.setMoradorSimNao(spMorador.getSelectedItem().toString());
+         //   modelAcesso.setMoradorSimNao(edtMorador.getText().toString());
 
         } else {
 
